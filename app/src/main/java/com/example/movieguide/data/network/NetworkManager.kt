@@ -1,5 +1,6 @@
 package com.example.movieguide.data.network
 
+import com.example.movieguide.BuildConfig
 import com.example.movieguide.data.api.MoviesAPI
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -14,12 +15,12 @@ object NetworkManager {
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
         val client = OkHttpClient.Builder()
-//            .addInterceptor { chain -> return@addInterceptor addApiKeyToRequests(chain) }
+            .addInterceptor { chain -> return@addInterceptor addApiKeyToRequests(chain) }
             .addInterceptor(logging)
             .build()
 
         return Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/")
+            .baseUrl("https://api.themoviedb.org/3/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -31,7 +32,7 @@ object NetworkManager {
         val originalHttpUrl = original.url
 
         val url = originalHttpUrl.newBuilder()
-            .addQueryParameter("api_key", "316464419f5dbcce00467d1b21c29439")
+            .addQueryParameter(BuildConfig.API_KEY, BuildConfig.API_VALUE)
             .build()
 
         // Request customization: add request headers
