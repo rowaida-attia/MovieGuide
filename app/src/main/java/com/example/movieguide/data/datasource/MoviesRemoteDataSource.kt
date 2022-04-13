@@ -3,17 +3,17 @@ package com.example.movieguide.data.datasource
 import com.example.movieguide.domain.models.MovieCreditsResponseModel
 import com.example.movieguide.domain.models.MovieDetailsResponseModel
 import com.example.movieguide.domain.models.MoviesListResponseModel
-import retrofit2.Call
+import retrofit2.Response
 
 interface MoviesRemoteDataSource {
 
-    fun getPopularMovies(): Call<MoviesListResponseModel>
+    suspend fun getPopularMovies(): Response<MoviesListResponseModel>
 
-    fun searchMovie(query: String): Call<MoviesListResponseModel>
+    suspend fun searchMovies(query: String): Response<MoviesListResponseModel>
 
-    fun getMovieDetails(movieID: Int): Call<MovieDetailsResponseModel>
+    suspend fun getMovieDetails(movieID: Int): Response<MovieDetailsResponseModel>
 
-    fun getSimilarMovies(movieID: Int): Call<MoviesListResponseModel>
+    suspend fun getSimilarMovies(movieID: Int): Response<MoviesListResponseModel>
 
-    fun getMovieCredits(movieID: Int): Call<MovieCreditsResponseModel>
+    suspend fun getMovieCredits(movieID: Int): Response<MovieCreditsResponseModel>
 }

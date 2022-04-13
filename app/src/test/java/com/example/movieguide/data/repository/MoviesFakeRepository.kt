@@ -1,30 +1,40 @@
-package com.example.movieguide.data.datasource
+package com.example.movieguide.data.repository
 
-import com.example.movieguide.data.api.MoviesAPI
+import com.example.movieguide.domain.gateway.MoviesGateway
 import com.example.movieguide.domain.models.MovieCreditsResponseModel
 import com.example.movieguide.domain.models.MovieDetailsResponseModel
 import com.example.movieguide.domain.models.MoviesListResponseModel
 import retrofit2.Response
-import javax.inject.Inject
 
-class MoviesRemoteDataSourceImpl @Inject constructor(private val moviesAPI: MoviesAPI) : MoviesRemoteDataSource {
+class MoviesFakeRepository : MoviesGateway {
     override suspend fun getPopularMovies(): Response<MoviesListResponseModel> {
-        return moviesAPI.getPopularMovies()
+        return Response.success(
+            MoviesListResponseModel(1)
+        )
     }
 
     override suspend fun searchMovies(query: String): Response<MoviesListResponseModel> {
-        return moviesAPI.searchMovies(query)
+        return Response.success(
+            MoviesListResponseModel(1)
+        )
     }
 
     override suspend fun getMovieDetails(movieID: Int): Response<MovieDetailsResponseModel> {
-        return moviesAPI.getMovieDetails(movieID)
+        return Response.success(
+            MovieDetailsResponseModel(title = "Title")
+        )
     }
 
     override suspend fun getSimilarMovies(movieID: Int): Response<MoviesListResponseModel> {
-        return moviesAPI.getSimilarMovies(movieID)
+        return Response.success(
+            MoviesListResponseModel(1)
+        )
     }
 
     override suspend fun getMovieCredits(movieID: Int): Response<MovieCreditsResponseModel> {
-        return moviesAPI.getMovieCredits(movieID)
+        return Response.success(
+            MovieCreditsResponseModel(1)
+        )
     }
+
 }

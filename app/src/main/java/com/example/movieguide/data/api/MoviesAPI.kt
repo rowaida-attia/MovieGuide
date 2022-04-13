@@ -3,24 +3,24 @@ package com.example.movieguide.data.api
 import com.example.movieguide.domain.models.MovieCreditsResponseModel
 import com.example.movieguide.domain.models.MovieDetailsResponseModel
 import com.example.movieguide.domain.models.MoviesListResponseModel
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface MoviesAPI {
 
     @GET("movie/popular")
-    fun getPopularMovies(): Call<MoviesListResponseModel>
+    suspend fun getPopularMovies(): Response<MoviesListResponseModel>
 
     @GET("search/movie")
-    fun searchMovie(@Query("query") query: String): Call<MoviesListResponseModel>
+    suspend fun searchMovies(@Query("query") query: String): Response<MoviesListResponseModel>
 
     @GET("movie/{movie_id}")
-    fun getMovieDetails(@Path("movie_id") movieID: Int): Call<MovieDetailsResponseModel>
+    suspend fun getMovieDetails(@Path("movie_id") movieID: Int): Response<MovieDetailsResponseModel>
 
     @GET("movie/{movie_id}/similar")
-    fun getSimilarMovies(@Path("movie_id") movieID: Int): Call<MoviesListResponseModel>
+    suspend fun getSimilarMovies(@Path("movie_id") movieID: Int): Response<MoviesListResponseModel>
 
     @GET("movie/{movie_id}/credits")
-    fun getMovieCredits(@Path("movie_id") movieID: Int): Call<MovieCreditsResponseModel>
+    suspend fun getMovieCredits(@Path("movie_id") movieID: Int): Response<MovieCreditsResponseModel>
 
 }

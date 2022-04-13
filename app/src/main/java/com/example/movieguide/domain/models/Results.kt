@@ -3,18 +3,18 @@ package com.example.movieguide.domain.models
 import com.google.gson.annotations.SerializedName
 
 data class Results(
-    @SerializedName("adult") var adult: Boolean?,
-    @SerializedName("backdrop_path") var backdropPath: String?,
-    @SerializedName("genre_ids") var genreIds: MutableList<Int>?,
-    @SerializedName("id") var id: Int?,
-    @SerializedName("original_language") var originalLanguage: String?,
-    @SerializedName("original_title") var originalTitle: String?,
-    @SerializedName("overview") var overview: String?,
-    @SerializedName("popularity") var popularity: Double?,
-    @SerializedName("poster_path") var posterPath: String?,
-    @SerializedName("release_date") var releaseDate: String?,
-    @SerializedName("title") var title: String?,
-    @SerializedName("video") var video: Boolean?,
-    @SerializedName("vote_average") var voteAverage: Double?,
-    @SerializedName("vote_count") var voteCount: Int?
+    @SerializedName("adult") var adult: Boolean? = null,
+    @SerializedName("backdrop_path") var backdropPath: String? = null,
+    @SerializedName("genre_ids") var genreIds: MutableList<Int>? = null,
+    @SerializedName("id") var id: Int? = null,
+    @SerializedName("original_language") var originalLanguage: String? = null,
+    @SerializedName("original_title") var originalTitle: String? = null,
+    @SerializedName("overview") var overview: String? = null,
+    @SerializedName("popularity") var popularity: Double? = null,
+    @SerializedName("poster_path") var posterPath: String? = null,
+    @SerializedName("release_date") var releaseDate: String? = null,
+    @SerializedName("title") var title: String? = null,
+    @SerializedName("video") var video: Boolean? = null,
+    @SerializedName("vote_average") var voteAverage: Double? = null,
+    @SerializedName("vote_count") var voteCount: Int? = null
 )

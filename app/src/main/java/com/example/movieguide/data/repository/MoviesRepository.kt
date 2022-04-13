@@ -1,30 +1,32 @@
 package com.example.movieguide.data.repository
 
+import com.example.movieguide.data.datasource.MoviesRemoteDataSource
 import com.example.movieguide.domain.gateway.MoviesGateway
 import com.example.movieguide.domain.models.MovieCreditsResponseModel
 import com.example.movieguide.domain.models.MovieDetailsResponseModel
 import com.example.movieguide.domain.models.MoviesListResponseModel
-import retrofit2.Call
+import retrofit2.Response
+import javax.inject.Inject
 
-class MoviesRepository: MoviesGateway {
-    override fun getPopularMovies(): Call<MoviesListResponseModel> {
-        TODO("Not yet implemented")
+class MoviesRepository @Inject constructor(private val moviesRemoteDataSource: MoviesRemoteDataSource): MoviesGateway {
+    override suspend fun getPopularMovies(): Response<MoviesListResponseModel> {
+        return moviesRemoteDataSource.getPopularMovies()
     }
 
-    override fun searchMovie(query: String): Call<MoviesListResponseModel> {
-        TODO("Not yet implemented")
+    override suspend fun searchMovies(query: String): Response<MoviesListResponseModel> {
+        return moviesRemoteDataSource.searchMovies(query)
     }
 
-    override fun getMovieDetails(movieID: Int): Call<MovieDetailsResponseModel> {
-        TODO("Not yet implemented")
+    override suspend fun getMovieDetails(movieID: Int): Response<MovieDetailsResponseModel> {
+        return moviesRemoteDataSource.getMovieDetails(movieID)
     }
 
-    override fun getSimilarMovies(movieID: Int): Call<MoviesListResponseModel> {
-        TODO("Not yet implemented")
+    override suspend fun getSimilarMovies(movieID: Int): Response<MoviesListResponseModel> {
+        return moviesRemoteDataSource.getSimilarMovies(movieID)
     }
 
-    override fun getMovieCredits(movieID: Int): Call<MovieCreditsResponseModel> {
-        TODO("Not yet implemented")
+    override suspend fun getMovieCredits(movieID: Int): Response<MovieCreditsResponseModel> {
+        return moviesRemoteDataSource.getMovieCredits(movieID)
     }
 
 }
